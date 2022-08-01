@@ -1,0 +1,77 @@
+version: '3.9'
+services:
+  
+  #python3 Service
+  crawler-app:
+    build: 
+        context: .
+        dockerfile: Dockerfile
+    image: crawler/python3.9.13
+    container_name: crawler-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - crawler-network
+
+
+  #Nginx Service
+  crawler-webserver:
+    image: nginx:1.23.1
+    container_name: crawler
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "433:433"
+    volumes:
+      - ./:/var/www
+    networks:
+      - crawler-network
+
+
+  #PostgreSQL service
+  crawler-db:
+    image: postgres:14.4
+    container_name: crawler-db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      POSTGRES_DB: crawler
+      POSTGRES_PASSWORD: password
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata: /var/lib/postgressql/
+    networks:
+      - crawler-network
+
+  #MailHog Service
+  crawler-mail:
+    image: mailhog/mailhog:v1.0.0
+    container_name: crawler-mail
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    network: 
+      - crawler-network
+  
+
+#Docker Network
+networks:
+  crawler-network:
+    driver: bridge
+
+#Volumes
+volumes:
+ dbdata:
+  ddriver: local
