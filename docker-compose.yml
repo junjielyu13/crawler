@@ -1,7 +1,8 @@
-version: '3.9'
+version: '3'
+
 services:
   
-  #python3 Service
+  #python Service
   crawler-app:
     build: 
         context: .
@@ -10,12 +11,14 @@ services:
     container_name: crawler-app
     restart: unless-stopped
     tty: true
+    ports:
+      - "8080:8080"
     environment:
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
-    working_dir: /var/www
+      SERVICE_TAGS: app
+      SERVICE_NAME: dev
+    working_dir: /app
     volumes:
-      - ./:/var/www
+      - ./:/app/www
     networks:
       - crawler-network
 
@@ -30,7 +33,7 @@ services:
       - "80:80"
       - "433:433"
     volumes:
-      - ./:/var/www
+      - ./:/app/www
     networks:
       - crawler-network
 
@@ -47,9 +50,9 @@ services:
       POSTGRES_DB: crawler
       POSTGRES_PASSWORD: password
       SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      SERVICE_NAME: postgressql
     volumes:
-      - dbdata: /var/lib/postgressql/
+      - dbdata:/app/db/postgressql/
     networks:
       - crawler-network
 
@@ -62,7 +65,7 @@ services:
     ports:
       - "1025:1025"
       - "8025:8025"
-    network: 
+    networks: 
       - crawler-network
   
 
@@ -74,4 +77,4 @@ networks:
 #Volumes
 volumes:
  dbdata:
-  ddriver: local
+  driver: local

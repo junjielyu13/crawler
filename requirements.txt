@@ -1,0 +1,9 @@
+Django
+flask
+psycopg2
+urllib3
+bs4
+scrapy
+selenium
+numpy 
+redis
