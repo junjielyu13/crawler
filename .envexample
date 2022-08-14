@@ -1,0 +1,2 @@
+DB_DATABASE_URI = 'postgresql://postgres:xxxxx@localhost/yyyyy'
+DB_SECRET = "xxxxx"

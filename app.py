@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admins@localhost/flasksql'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@localhost/flasksql'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = 'admin'
 
@@ -45,5 +45,5 @@ def personadd():
 if __name__ == '__main__':
     db.create_all()
     app.run()
-    
+
 # http://127.0.0.1:8080
