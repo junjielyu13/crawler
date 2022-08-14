@@ -11,8 +11,6 @@ services:
     container_name: crawler-app
     restart: unless-stopped
     tty: true
-    ports:
-      - "8080:8080"
     environment:
       SERVICE_TAGS: app
       SERVICE_NAME: dev

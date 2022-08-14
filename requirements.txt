@@ -1,5 +1,7 @@
 Django
 flask
+flask_sqlalchemy
+psycopg2-binary
 psycopg2
 urllib3
 bs4
@@ -7,3 +9,4 @@ scrapy
 selenium
 numpy 
 redis
+python-dotenv
