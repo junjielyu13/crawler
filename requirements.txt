@@ -7,9 +7,10 @@ urllib3
 bs4
 scrapy
 selenium
-numpy 
+numpy
+pandas 
 redis
 python-dotenv
 pdfplumber
-pandas
 json
+autopep8

@@ -1,14 +1,17 @@
-import pdfplumber;
-import psycopg2;
+import pdfplumber
+import psycopg2
+import os
+from dotenv import load_dotenv
 
+load_dotenv('.env')
 
-conn=psycopg2.connect(
-    database="pdfcrawlerdb",
-    user="postgres",
-    password="admin",
-    host="localhost",
-    port="5432"
-    )
+conn = psycopg2.connect(
+    database=os.environ.get("DB_DATABASE_NAME"),
+    user=os.environ.get("DB_USERNAME"),
+    password=os.environ.get("DB_PASSWORD"),
+    host=os.environ.get("DB_HOST"),
+    port=os.environ.get("DB_PORT")
+)
 cur = conn.cursor()
 
 with pdfplumber.open("./source/pdf/Notes-de-tall-via-PAU-CFGS.pdf") as pdf:
@@ -22,7 +25,7 @@ with pdfplumber.open("./source/pdf/Notes-de-tall-via-PAU-CFGS.pdf") as pdf:
             "scores"         TEXT[]
         )
     ''')
-    conn.commit() 
+    conn.commit()
 
     for pageindex in range(len(pdf.pages)):
 
@@ -30,20 +33,19 @@ with pdfplumber.open("./source/pdf/Notes-de-tall-via-PAU-CFGS.pdf") as pdf:
         table = page.extract_table()
         header = table[:3]
         body = table[3:]
-        for rowindex in range(len(body)): 
+        for rowindex in range(len(body)):
             info = body[rowindex]
 
             print(info)
 
-            name_major = info[1].replace("'","")
-            pooble_name = info[2].replace("'","")
+            name_major = info[1].replace("'", "")
+            pooble_name = info[2].replace("'", "")
 
             cur.execute('''
                 INSERT INTO "majors_info"(id_major, name, poble, university, scores) \
                 VALUES (%d, %s, %s, %s, ARRAY[%s])
-            '''
-            %(int(info[0]), "'" + name_major + "'", "'"+pooble_name+"'", "'"+info[3]+"'", info[4:len(info)])
-            )
+            '''% (int(info[0]), "'" + name_major + "'", "'"+pooble_name+"'", "'"+info[3]+"'", info[4:len(info)])
+                        )
 
             conn.commit()
     cur.close()
