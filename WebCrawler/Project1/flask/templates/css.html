@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset ="UTF-8" >
+    <TItle>标题</TItle>
+</head>
+<body>
+    variable <br/>
+    今天是 {{var}}, welcome.  <br/> <!-- 大括号用来传输jinja2变量 -->
+    今天来的有: <br/>
+    {% for date in list %}    <!-- 大括号和百分号用来传输jinja2变量  for 还有 if-->
+        <li> {{date}} </li> 
+    {% endfor %}
+    任务: <br/>  <!-- 如何在页面打印表格 -->
+    <table border ="1">
+        <!--
+            <tr>
+                <td>test 1</td>
+                <td>test 2</td>
+            </tr>
+            <tr>
+                <td>test 3</td>
+                <td>test 4</td>
+            </tr>
+            <tr>
+                <td>test 5</td>
+                <td>test 6</td>
+            </tr>
+        -->
+        {% for key,value in task.items() %}    <!--  item == [(key,value),(key,value),(key,value)] 字典--> 
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value}}</td>      
+            </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

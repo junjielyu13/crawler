@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <TItle>结果</TItle> 
+    </head>
+    <body>
+
+        <table border ="1">
+            {% for key,value in result.items() %}    <!--  item == [(key,value),(key,value),(key,value)] 字典--> 
+                <tr>
+                    <th>{{key}}</th>
+                    <td>{{value}}</td>      
+                </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+
+</html>

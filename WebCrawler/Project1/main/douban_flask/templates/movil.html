@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>豆瓣电影TOP250</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="static/css/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="static/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="static/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              豆瓣电影TOP250
+            </span>
+          </a>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="s-1"> </span>
+            <span class="s-2"> </span>
+            <span class="s-3"> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="index.html">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="movil.html">电影</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="score.html">评分</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="word.html">词云</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="team.html">团队</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+  </div>
+
+
+  <!-- about section -->
+  <section class="about_section layout_padding">
+    <div class="container-fluid">
+
+      <table class="table table-striped">
+
+        <tr>
+          <td>排名</td>
+          <td>电影中文名称</td>
+          <td>电影外国名称</td>
+          <td>评分</td>
+          <td>评论人数</td>
+          <td>一句话评论</td>
+          <td>其他信息</td>
+        </tr>
+
+        {% for movie in movies %}
+          <tr>
+            <td>{{movie[0]}}</td>
+            <td>
+              <a href="{{movie[1]}}" target="_blank">
+                {{movie[3]}}
+              </a>
+            </td>
+            <td>{{movie[4]}}</td>
+            <td>{{movie[5]}}</td>
+            <td>{{movie[6]}}</td>
+            <td>{{movie[7]}}</td>
+            <td>{{movie[8]}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+  <div class="footer_bg">
+
+
+
+ <!-- info section -->
+ <section class="info_section ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 mb-4 mb-md-0 d-flex d-md-block flex-column align-items-center text-center text-md-left ">
+        <div class="info_info">
+          <h5>
+            信息
+          </h5>
+          <p>
+            更多信息请发邮件，虽然我不会理你
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 mb-md-0 d-flex d-md-block flex-column align-items-center text-center text-md-left ">
+        <div class="info_contact">
+          <h5>
+            关于我
+          </h5>
+          <div>
+            <div class="img-box">
+              <img src="static/images/location-white.png" width="18px" alt="">
+            </div>
+            <p>
+              Barcelona
+            </p>
+          </div>
+          <div>
+            <div class="img-box">
+              <img src="static/images/telephone-white.png" width="12px" alt="">
+            </div>
+            <p>
+              110
+            </p>
+          </div>
+          <div>
+            <div class="img-box">
+              <img src="static/images/envelope-white.png" width="18px" alt="">
+            </div>
+            <p>
+              jfjunjieli@gmail.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 mb-md-0 d-flex d-md-block flex-column align-items-center text-center text-md-left ">
+        <div class="info_insta">
+          <h5>
+            Instagram
+          </h5>
+          <div class="insta_container">
+            <div>
+              <a href="">
+                <div class="insta-box b-1">
+                  <img src="static/images/insta.png" alt="">
+                </div>
+              </a>
+              <a href="">
+                <div class="insta-box b-2">
+                  <img src="static/images/insta.png" alt="">
+                </div>
+              </a>
+            </div>
+
+            <div>
+              <a href="">
+                <div class="insta-box b-3">
+                  <img src="static/images/insta.png" alt="">
+                </div>
+              </a>
+              <a href="">
+                <div class="insta-box b-4">
+                  <img src="static/images/insta.png" alt="">
+                </div>
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <div class="insta-box b-3">
+                  <img src="static/images/insta.png" alt="">
+                </div>
+              </a>
+              <a href="">
+                <div class="insta-box b-4">
+                  <img src="static/images/insta.png" alt="">
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex d-md-block flex-column align-items-center text-center text-md-left ">
+        <div class="info_form ">
+          <h5>
+            Newsletter
+          </h5>
+          <form action="">
+            <input type="email" placeholder="Enter your email">
+            <button>
+              Subscribe
+            </button>
+          </form>
+          <div class="social_box">
+            <a href="">
+              <img src="static/images/fb.png" alt="">
+            </a>
+            <a href="">
+              <img src="static/images/twitter.png" alt="">
+            </a>
+            <a href="">
+              <img src="static/images/linkedin.png" alt="">
+            </a>
+            <a href="">
+              <img src="static/images/youtube.png" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end info_section -->
+
+
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-9 mx-auto">
+            <p>
+              Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer section -->
+
+  </div>
+
+
+
+  <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="static/js/bootstrap.js"></script>
+
+</body>
+
+</html>
